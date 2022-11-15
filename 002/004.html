@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>함수로 표현해보기</title>
+</head>
+<body>
+    
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script> 
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="text/babel">
+
+        function Header()  {
+            return (
+            <div>
+                <h1>header</h1>
+                <div>menu</div>
+            </div>
+        )};
+
+        // 프롭스 사용하기
+        // function Main(props) {
+        //     return (
+        //     <div>
+        //         <h1>hi {props.name}</h1>
+        //         <h3>나이는 {props.age}살</h3>
+        //         <p>hello world</p>
+        //     </div>
+        // )};
+
+        // 구조분해 할당을 사용하기
+        function Main({name, age}) {
+            return (
+            <div>
+                <h1>hi {name}</h1>
+                <h3>나이는 {age}살</h3>
+                <p>hello world</p>
+            </div>
+        )};
+
+        function Product() {
+            return (
+            <div>
+                <h1>product</h1>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+                <div>best seller 옷</div>
+            </div>
+        )};
+
+        function Footer() {
+            return (
+            <div>
+                <h1>footer</h1>
+            </div>
+        )};
+
+        function 로그아웃() {
+            return (
+                <button>로그아웃</button>
+            )
+        }
+        function 로그인() {
+            return (
+                <div>
+                    <input type="text"/>
+                    <input type='password'/>
+                    <button>로그인</button>
+                </div>
+            )
+        }
+        function Test(props) {
+            console.log(props)
+            return null;
+        }
+        const hello = true;
+        const login = true;
+        const body = 
+            (
+            <div>
+                {Header('about','product')}
+                <Main name='lee' age='10'/>
+                {Product()}
+                {Footer()}
+                {console.log('hi')}
+                {1 + 1}
+                {'hello' + 'world'}
+                {'<br/>'}
+                {hello ? 'one' : 'two'}
+                {login ? 로그아웃() : 로그인()}
+                {/* 슬래쉬로 닫지 않는 경우 children이라는 이름으로 들어간다.
+                    map을 사용하여 새로운 배열로 사용도 가능 */}
+                <Test>
+                    hello world
+                    <h2>hello world</h2>
+                    <h2>hello world</h2>
+                    <Footer/>
+                </Test>
+            </div>
+        );
+
+        const domContainer = document.querySelector('#root');
+        ReactDOM.render(body, domContainer);
+        console.dir(ReactDOM);
+    </script>
+</body>
+</html>
