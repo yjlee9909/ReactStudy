@@ -17,26 +17,40 @@ const ExpenseForm = () => {
   const titleChangeHandler = (event) => {
     console.log(event.target.value);
     // setEnteredTitle(event.target.value);
-    // useState는 이전의 상태를 버리기 때문에 스프레드 문법을 사용하여 덮어쓰는 방식
-    setUserInput({
-      ...userInput,
-      entertedTitle: event.target.value,
+    // 2. useState는 이전의 상태를 버리기 때문에 스프레드 문법을 사용하여 덮어쓰는 방식
+    // setUserInput({
+    //   ...userInput,
+    //   entertedTitle: event.target.value,
+    // });
+
+    // 3. state 스냅샷을 얻기 (가장 최신의 상태 업데이트를 보장)
+    // 이전 상태에 따라 상태를 업데이트할 때 사용
+    setUserInput((prevState) => {
+      return { ...prevState, entertedTitle: event.target.value };
     });
   };
   const amountChangeHandler = (event) => {
     console.log(event.target.value);
     // setEnteredAmount(event.target.value);
-    setUserInput({
-      ...userInput,
-      enteredAmount: event.target.value,
+    // setUserInput({
+    //   ...userInput,
+    //   enteredAmount: event.target.value,
+    // });
+
+    setUserInput((prevState) => {
+      return { ...prevState, enteredAmount: event.target.value };
     });
   };
   const dateChangeHandler = (event) => {
     console.log(event.target.value);
     // setEnteredDate(event.target.value);
-    setUserInput({
-      ...userInput,
-      enteredDate: event.target.value,
+    // setUserInput({
+    //   ...userInput,
+    //   enteredDate: event.target.value,
+    // });
+
+    setUserInput((prevState) => {
+      return { ...prevState, enteredDate: event.target.value };
     });
   };
   return (
