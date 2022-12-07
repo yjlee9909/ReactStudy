@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -66,14 +66,28 @@ const ExpenseForm = () => {
     };
 
     console.log(expenseData);
+    props.onSaveExpenseData(expenseData);
+    setEnteredTitle("");
+    setEnteredAmount("");
+    setEnteredDate("");
   };
   return (
+    // * form 태그 내에서 submit 이벤트가 발생한다면 (button type=submit) 새로고침이 일어나 의도한 AJAX 요청이 발생하지 않는다. -> event.preventDefault로 submit 관련 태그 고유의 동작 중단
+    // * 버튼이 아닌 form 태그에 onSubmit을 사용한다면 새로고침 없이 의도한 기능 구현
+
     // button type=submit인 상태로 클릭을 준다면 form 요소에 내장되어 있는 기능을 실행하지 않는다. -> fomr에 onSubmit을 실행시켜주기
+
+    // form에 onSubmit을 묶어놓고 사용한다면 form 내부의 컴포넌트에 focus를 주었을 때, 엔터를 눌러도 onSubmit을 호출함
+    // onClick이라면 따로 onKeyPress 같은 이벤트를 추가해야하는 불편함이 존재
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" onChange={titleChangeHandler} />
+          <input
+            type="text"
+            onChange={titleChangeHandler}
+            value={enteredTitle}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -82,6 +96,7 @@ const ExpenseForm = () => {
             min="0.01"
             step="0.01"
             onChange={amountChangeHandler}
+            value={enteredAmount}
           />
         </div>
         <div className="new-expense__control">
@@ -91,6 +106,7 @@ const ExpenseForm = () => {
             min="2022-11-11"
             max="2025-12-31"
             onChange={dateChangeHandler}
+            value={enteredDate}
           />
         </div>
       </div>
