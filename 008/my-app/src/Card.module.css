@@ -1,0 +1,5 @@
+/* 1. 일반 CSS : css 파일을 만들고 컴포넌트에 import. —> 클래스네이밍이 겹칠 위험이 있음
+2. 모듈 CSS : module.css 만들고 컴포넌트에 import  —> 클래스 네이밍을 겹치지 않게 만들어줌 */
+.rounded {
+  border-radius: 0.7rem;
+}

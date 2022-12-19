@@ -27,7 +27,7 @@ const DUMMY_EXPENSES = [
 function App() {
   return (
     <>
-      {/* <ExpensesItem
+      <ExpensesItem
         title={DUMMY_EXPENSES[0].title}
         amount={DUMMY_EXPENSES[0].amount}
         date={DUMMY_EXPENSES[0].date}
@@ -41,13 +41,13 @@ function App() {
         title={DUMMY_EXPENSES[2].title}
         amount={DUMMY_EXPENSES[2].amount}
         date={DUMMY_EXPENSES[2].date}
-      /> */}
-      <Card className="setting" value="챌린지">
+      />
+      {/* <Card className="setting" value="챌린지">
         <SettingCard />
       </Card>
       <Card className="share" value="공유">
         <ShardCard />
-      </Card>
+      </Card> */}
     </>
   );
 }
