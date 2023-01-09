@@ -1,3 +1,4 @@
+import Expenses from "./components/Expenses";
 import ExpensesItem from "./components/ExpensesItem";
 import Card from "./components/propsEx/Card";
 import SettingCard from "./components/propsEx/SettingCard";
@@ -27,21 +28,7 @@ const DUMMY_EXPENSES = [
 function App() {
   return (
     <>
-      <ExpensesItem
-        title={DUMMY_EXPENSES[0].title}
-        amount={DUMMY_EXPENSES[0].amount}
-        date={DUMMY_EXPENSES[0].date}
-      />
-      <ExpensesItem
-        title={DUMMY_EXPENSES[1].title}
-        amount={DUMMY_EXPENSES[1].amount}
-        date={DUMMY_EXPENSES[1].date}
-      />
-      <ExpensesItem
-        title={DUMMY_EXPENSES[2].title}
-        amount={DUMMY_EXPENSES[2].amount}
-        date={DUMMY_EXPENSES[2].date}
-      />
+      <Expenses items={DUMMY_EXPENSES} />
       {/* <Card className="setting" value="챌린지">
         <SettingCard />
       </Card>
