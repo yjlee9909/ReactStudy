@@ -1,8 +1,11 @@
-import Card from "./Card";
+import Card from "../UI/Card";
 import ExpenseDate from "./ExpenseDate";
 import "./ExpenseItem.css";
 const ExpenseItem = (props) => {
-  // jsx 코드로 불러오기
+  // 보통 Handler로 끝나도록 작성
+  const clickHandler = (e) => {
+    console.log("hi");
+  };
   return (
     <div>
       {/* 열고 닫는 태그 사이에 컨텐츠가 있으면 작동하지 않음 */}
@@ -12,6 +15,7 @@ const ExpenseItem = (props) => {
           <h2>{props.title}</h2>
           <div className="expense-item__price">${props.amount}</div>
         </div>
+        <button onClick={clickHandler}>Change Title</button>
       </Card>
     </div>
   );
