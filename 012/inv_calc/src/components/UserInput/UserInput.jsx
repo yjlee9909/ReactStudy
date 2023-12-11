@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const UserInput = () => {
-  // 초기값 설정
+const UserInput = (props) => {
+  // 초깃값 설정
   const initialUserInput = {
     "current-savings": 10000,
     "yearly-contribution": 1200,
@@ -12,7 +12,8 @@ const UserInput = () => {
   const submitHandler = (e) => {
     // preventDefault() 리로드 방지
     e.preventDefault();
-    console.log("submit");
+
+    props.onCalculate(userInput);
   };
   const resetHandler = (e) => {
     setUserInput(initialUserInput);
