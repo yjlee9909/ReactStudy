@@ -1,14 +1,29 @@
+import { useState } from "react";
+
 const UserInput = () => {
+  // 초기값 설정
+  const initialUserInput = {
+    "current-savings": 10000,
+    "yearly-contribution": 1200,
+    "expected-return": 7,
+    duration: 10,
+  };
+  const [userInput, setUserInput] = useState(initialUserInput);
   const submitHandler = (e) => {
     // preventDefault() 리로드 방지
     e.preventDefault();
     console.log("submit");
   };
   const resetHandler = (e) => {
-    console.log("reset");
+    setUserInput(initialUserInput);
   };
   const inputChangeHandler = (input, value) => {
-    console.log(input, value);
+    setUserInput((prevInput) => {
+      return {
+        ...prevInput,
+        [input]: value,
+      };
+    });
   };
 
   return (
@@ -20,6 +35,7 @@ const UserInput = () => {
             onChange={(e) =>
               inputChangeHandler("current-savings", e.target.value)
             }
+            value={userInput["current-savings"]}
             type="number"
             id="current-savings"
           />
@@ -30,6 +46,7 @@ const UserInput = () => {
             onChange={(e) =>
               inputChangeHandler("yearly-contribution", e.target.value)
             }
+            value={userInput["yearly-contribution"]}
             type="number"
             id="yearly-contribution"
           />
@@ -44,6 +61,7 @@ const UserInput = () => {
             onChange={(e) =>
               inputChangeHandler("expected-return", e.target.value)
             }
+            value={userInput["expected-return"]}
             type="number"
             id="expected-return"
           />
@@ -52,6 +70,7 @@ const UserInput = () => {
           <label htmlFor="duration">Investment Duration (years)</label>
           <input
             onChange={(e) => inputChangeHandler("duration", e.target.value)}
+            value={userInput["duration"]}
             type="number"
             id="duration"
           />
