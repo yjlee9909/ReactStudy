@@ -8,7 +8,7 @@ const Button = (props) => {
       className={classes.button}
       onClick={props.onClick}
     >
-      {/* Add User 표시 */}
+      {/* 재사용성 생각 */}
       {props.children}
     </button>
   );
