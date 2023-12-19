@@ -13,9 +13,17 @@ const Login = (props) => {
 
   // [] 안의 조건일 경우에 재렌더링
   useEffect(() => {
-    setFormIsValid(
-      enteredEmail.includes("@") && enteredPassword.trim().length > 6
-    );
+    const identifier = setTimeout(() => {
+      console.log("유효성 체크!");
+      setFormIsValid(
+        enteredEmail.includes("@") && enteredPassword.trim().length > 6
+      );
+    }, 500); // 500밀리초 후에만 이 작업을 수행
+
+    return () => {
+      console.log("클린업");
+      clearTimeout(identifier); // 빠르게 입력시 "클린업"*n번, "유효성 체크"는 마지막 1번만 출력
+    }; // 반환 가능 (클린업 함수), 첫 번째 사이드이펙트가 실행되기 전에는 실행x
   }, [enteredEmail, enteredPassword]);
 
   const emailChangeHandler = (event) => {
